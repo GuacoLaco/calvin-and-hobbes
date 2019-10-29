@@ -12,23 +12,30 @@ def downloadImage(year, month, day):
         return
 
     else:
-        print(img_filename)
-        with urllib.request.urlopen('https://www.gocomics.com/calvinandhobbes/{y}/{m}/{d}'.format(y=y, m=m, d=d)) as response:
+        print(f'Trying to download {img_filename}')
+        with urllib.request.urlopen(f'https://www.gocomics.com/calvinandhobbes/{y}/{m}/{d}') as response:
             html = str(response.read())
             img_url = re.search(r'<meta name=\"twitter:image\" content=\"(https://assets\.amuniversal\.com/.+?)\">', html)[1]
 
             urllib.request.urlretrieve(img_url, img_filename)
                 
-            print('Downloaded ' + img_url + ' at ' + img_filename)
+            print(f'Downloaded {img_url} at {img_filename}\n')
 
-
-print(os.getcwd())
 
 year = 1985
 month = 11
 day = 18
 
-if input('Download images? y/n: ') == 'y':
+print(f'Download images at {os.getcwd()}')
+
+confirmation = input('Are you sure? y/n: ')
+
+if confirmation == 'y' or confirmation == 'Y':
+    for i in range(1985, 1996):
+        if not os.path.isdir(str(i)):
+            print(f'Created directory {i}')
+            os.mkdir(str(i))
+
     while year < 1996:
         try:
             downloadImage(year, month, day)
