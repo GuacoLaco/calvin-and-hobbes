@@ -1,5 +1,5 @@
 # calvin-and-hobbes
-A python script that downloads all of Calvin and Hobbes comics from 1985 to 1995 from gocomics.com
+A python script that downloads all of the Calvin and Hobbes comics from 1985 to 1995 from gocomics.com
 
 Just run the script and the downloads should begin. If you are interrupted, don't worry, you can always start again later. It won't try to download files that you already have in your computer. 
 
